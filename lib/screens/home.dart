@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () {},
           )
         ],
+        centerTitle: true,
         title: Text(
           'Chats',
           style: TextStyle(
