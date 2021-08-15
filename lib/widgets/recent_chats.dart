@@ -1,4 +1,5 @@
 import 'package:chat_ui/data/faker.dart';
+import 'package:chat_ui/models/message.dart';
 import 'package:flutter/material.dart';
 
 class RecentChats extends StatelessWidget {
@@ -18,7 +19,56 @@ class RecentChats extends StatelessWidget {
           ),
         ),
         child: ListView.builder(
-          itemBuilder: (context, index) => Text(chats[index].sender.name),
+          itemBuilder: (context, index) {
+            final Message chat = chats[index];
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 35,
+                      backgroundImage: AssetImage(chat.sender.imageUrl),
+                    ),
+                    SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          chat.sender.name,
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(height: 5),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: Text(
+                            chat.text,
+                            style: TextStyle(
+                              color: Colors.blueGrey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text(chat.time),
+                    Text('NEW'),
+                  ],
+                ),
+              ],
+            );
+          },
           itemCount: chats.length,
         ),
       ),
