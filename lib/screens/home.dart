@@ -1,4 +1,3 @@
-import 'package:chat_ui/data/faker.dart';
 import 'package:chat_ui/widgets/category_selector.dart';
 import 'package:chat_ui/widgets/fav_contacts.dart';
 import 'package:chat_ui/widgets/recent_chats.dart';
