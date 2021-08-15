@@ -1,4 +1,5 @@
 import 'package:chat_ui/data/faker.dart';
+import 'package:chat_ui/screens/chat.dart';
 import 'package:flutter/material.dart';
 
 class FavouriteContacts extends StatelessWidget {
@@ -40,24 +41,33 @@ class FavouriteContacts extends StatelessWidget {
             child: ListView.builder(
               padding: EdgeInsets.only(left: 10),
               scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, index) => Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      radius: 35,
-                      backgroundImage: AssetImage(favorites[index].imageUrl),
+              itemBuilder: (BuildContext context, index) => GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => ChatScreen(user: favorites[index]),
                     ),
-                    SizedBox(height: 6),
-                    Text(
-                      favorites[index].name,
-                      style: TextStyle(
-                        color: Colors.blueGrey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 35,
+                        backgroundImage: AssetImage(favorites[index].imageUrl),
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 6),
+                      Text(
+                        favorites[index].name,
+                        style: TextStyle(
+                          color: Colors.blueGrey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               itemCount: favorites.length,
