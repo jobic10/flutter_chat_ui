@@ -1,3 +1,4 @@
+import 'package:chat_ui/data/faker.dart';
 import 'package:chat_ui/widgets/category_selector.dart';
 import 'package:chat_ui/widgets/fav_contacts.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +59,22 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 children: [
                   FavouriteContacts(),
+                  Expanded(
+                    child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          // color: Theme.of(context).accentColor,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30),
+                          ),
+                        ),
+                        child: ListView.builder(
+                          itemBuilder: (context, index) =>
+                              Text(chats[index].sender.name),
+                          itemCount: chats.length,
+                        )),
+                  ),
                 ],
               ),
             ),
