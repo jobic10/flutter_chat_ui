@@ -22,12 +22,12 @@ final User james = User(
 final User job = User(
   id: 3,
   name: 'Job',
-  imageUrl: 'assets/images/job.jpg',
+  imageUrl: 'assets/images/john.jpg',
 );
 final User roseline = User(
   id: 4,
   name: 'Roseline',
-  imageUrl: 'assets/images/roseline.jpg',
+  imageUrl: 'assets/images/olivia.jpg',
 );
 final User sam = User(
   id: 5,
@@ -42,7 +42,7 @@ final User sophia = User(
 final User faruq = User(
   id: 7,
   name: 'Faruq',
-  imageUrl: 'assets/images/faruq.jpg',
+  imageUrl: 'assets/images/steven.jpg',
 );
 
 // FAVORITE CONTACTS
