@@ -28,7 +28,11 @@ class RecentChats extends StatelessWidget {
               final Message chat = chats[index];
               return Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFFFFEFEE),
+                  color: chat.unread ? Color(0xFFFFEFEE) : Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
                 ),
                 margin: EdgeInsets.only(top: 5, bottom: 5, right: 20),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -77,14 +81,30 @@ class RecentChats extends StatelessWidget {
                           chat.time,
                           style: TextStyle(
                             fontSize: 12,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
-                          'NEW',
-                          style: TextStyle(
-                            fontSize: 13,
+                        SizedBox(height: 5),
+                        if (chat.unread)
+                          Container(
+                            width: 40,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'NEW',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ],
