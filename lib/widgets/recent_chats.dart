@@ -27,6 +27,9 @@ class RecentChats extends StatelessWidget {
             itemBuilder: (context, index) {
               final Message chat = chats[index];
               return Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFFFFEFEE),
+                ),
                 margin: EdgeInsets.only(top: 5, bottom: 5, right: 20),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Row(
@@ -70,8 +73,18 @@ class RecentChats extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        Text(chat.time),
-                        Text('NEW'),
+                        Text(
+                          chat.time,
+                          style: TextStyle(
+                            fontSize: 12,
+                          ),
+                        ),
+                        Text(
+                          'NEW',
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
                       ],
                     ),
                   ],
