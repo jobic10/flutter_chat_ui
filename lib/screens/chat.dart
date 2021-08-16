@@ -72,10 +72,11 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Widget _buildMessage(Message message, bool isMe) {
-    return Container(
+    final Container msg = Container(
+      width: MediaQuery.of(context).size.width * .75,
       margin: isMe
           ? EdgeInsets.only(top: 8, bottom: 8, left: 80)
-          : EdgeInsets.only(top: 8, bottom: 8, right: 80),
+          : EdgeInsets.only(top: 8, bottom: 8),
       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,6 +112,23 @@ class _ChatScreenState extends State<ChatScreen> {
                 bottomRight: Radius.circular(20),
               ),
       ),
+    );
+    if (isMe) {
+      return msg;
+    }
+    return Row(
+      children: [
+        msg,
+        IconButton(
+          icon: Icon(
+            message.isLiked ? Icons.favorite : Icons.favorite_border,
+            color: message.isLiked
+                ? Theme.of(context).primaryColor
+                : Colors.blueGrey,
+          ),
+          onPressed: () {},
+        )
+      ],
     );
   }
 }
