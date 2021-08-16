@@ -12,6 +12,29 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
+      appBar: AppBar(
+        elevation: 0,
+        title: Text(
+          widget.user.name,
+          style: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.more_horiz,
+              size: 30,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          )
+        ],
+      ),
+    );
   }
 }
