@@ -113,9 +113,8 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
       ),
     );
-    if (isMe) {
-      return msg;
-    }
+    if (isMe) return msg;
+
     return Row(
       children: [
         msg,
