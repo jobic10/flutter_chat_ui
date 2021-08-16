@@ -37,36 +37,42 @@ class _ChatScreenState extends State<ChatScreen> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
                 ),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
-                child: ListView.builder(
-                  reverse: true,
-                  padding: EdgeInsets.only(top: 15),
-                  itemBuilder: (context, index) {
-                    final message = messages[index];
-                    final isMe = message.sender.id == currentUser.id;
-                    return _buildMessage(message, isMe);
-                  },
-                  itemCount: messages.length,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
+                  child: ListView.builder(
+                    reverse: true,
+                    padding: EdgeInsets.only(top: 15),
+                    itemBuilder: (context, index) {
+                      final message = messages[index];
+                      final isMe = message.sender.id == currentUser.id;
+                      return _buildMessage(message, isMe);
+                    },
+                    itemCount: messages.length,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+            _buildMessageComposer(),
+          ],
+        ),
       ),
     );
   }
@@ -128,6 +134,44 @@ class _ChatScreenState extends State<ChatScreen> {
           onPressed: () {},
         )
       ],
+    );
+  }
+
+  _buildMessageComposer() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 8),
+      height: 70,
+      decoration: BoxDecoration(
+        color: Colors.white,
+      ),
+      child: Row(
+        children: [
+          IconButton(
+            icon: Icon(
+              Icons.photo,
+              size: 25,
+              color: Theme.of(context).primaryColor,
+            ),
+            onPressed: () {},
+          ),
+          Expanded(
+            child: TextField(
+              textCapitalization: TextCapitalization.sentences,
+              decoration: InputDecoration.collapsed(
+                hintText: 'Send a message',
+              ),
+            ),
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.send,
+              size: 25,
+              color: Theme.of(context).primaryColor,
+            ),
+            onPressed: () {},
+          ),
+        ],
+      ),
     );
   }
 }
