@@ -54,6 +54,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   topRight: Radius.circular(30),
                 ),
                 child: ListView.builder(
+                  reverse: true,
                   padding: EdgeInsets.only(top: 15),
                   itemBuilder: (context, index) {
                     final message = messages[index];
@@ -76,9 +77,27 @@ class _ChatScreenState extends State<ChatScreen> {
           ? EdgeInsets.only(top: 8, bottom: 8, left: 80)
           : EdgeInsets.only(top: 8, bottom: 8, right: 80),
       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-      child: Text(
-        message.text,
-        style: TextStyle(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            message.time,
+            style: TextStyle(
+              color: Colors.blueGrey,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          SizedBox(height: 8),
+          Text(
+            message.text,
+            style: TextStyle(
+              color: Colors.blueGrey,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ],
       ),
       decoration: BoxDecoration(
         color: isMe ? Theme.of(context).accentColor : Color(0xFFFFEFEE),
