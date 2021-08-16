@@ -69,7 +69,7 @@ class RecentChats extends StatelessWidget {
                               ),
                               SizedBox(height: 5),
                               Container(
-                                width: MediaQuery.of(context).size.width * 0.5,
+                                width: MediaQuery.of(context).size.width * 0.45,
                                 child: Text(
                                   chat.text,
                                   style: TextStyle(
@@ -89,7 +89,7 @@ class RecentChats extends StatelessWidget {
                           Text(
                             chat.time,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 10,
                               color: Colors.grey,
                               fontWeight: FontWeight.bold,
                             ),
